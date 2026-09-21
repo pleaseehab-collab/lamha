@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FE2C55">
+<title>لودو — ألعاب لمحة</title>
+<style>
+  :root { --bg:#F4F5FA; --surface:#fff; --ink:#14172B; --muted:#5D6280; --line:#E3E5EF; --brand:#FE2C55;
+          --red:#E53935; --green:#2E9E48; --yellow:#F5B700; --blue:#1E73E8; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0C0E1B; --surface:#171A30; --ink:#fff; --muted:#a3a8cc; --line:#2a2f57; } }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif; min-height:100vh; padding:12px; }
+  .wrap { max-width:640px; margin:0 auto; display:grid; gap:12px; }
+  header { display:flex; align-items:center; gap:10px; }
+  header h1 { flex:1; font-size:1.3rem; }
+  a.back, button { font:inherit; border:0; border-radius:12px; padding:10px 16px; font-weight:700; cursor:pointer; text-decoration:none; }
+  a.back { background:var(--surface); color:var(--ink); border:1px solid var(--line); }
+  button.primary { background:var(--brand); color:#fff; }
+  button.alt { background:var(--surface); color:var(--ink); border:1px solid var(--line); }
+  button:disabled { opacity:.45; cursor:not-allowed; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:14px; display:grid; gap:10px; }
+  input { font:inherit; padding:11px 12px; border-radius:10px; border:1px solid var(--line); background:var(--bg); color:var(--ink); width:100%; }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .grow { flex:1; }
+  .lobby-item { display:flex; align-items:center; gap:8px; padding:10px; border:1px solid var(--line); border-radius:12px; }
+  .muted { color:var(--muted); font-size:.88rem; }
+  .pill { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:99px; background:var(--bg); border:1px solid var(--line); font-size:.85rem; }
+  .dot { width:12px; height:12px; border-radius:50%; display:inline-block; }
+  [hidden] { display:none !important; }
+  #boardBox { direction:ltr; width:100%; max-width:560px; margin:0 auto; }
+  #board { width:100%; height:auto; display:block; border-radius:14px; background:#fff; box-shadow:0 6px 24px rgba(0,0,0,.18); touch-action:manipulation; }
+  .piece { cursor:default; transition: transform .35s ease; }
+  .piece.legal { cursor:pointer; animation:pulse .8s ease-in-out infinite alternate; }
+  @keyframes pulse { from { stroke-width:2; } to { stroke-width:6; } }
+  #dice { font-size:2.6rem; line-height:1; min-width:56px; text-align:center; }
+  #log { max-height:130px; overflow:auto; font-size:.85rem; color:var(--muted); display:grid; gap:3px; }
+  #toast { position:fixed; inset:auto 12px 16px 12px; margin:auto; max-width:420px; background:#14172B; color:#fff; padding:12px 16px; border-radius:12px; text-align:center; z-index:9; }
+  .win { text-align:center; font-size:1.2rem; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="/shop.html">← المتجر</a>
+    <h1>🎲 لودو</h1>
+    <span class="pill" id="conn">غير متصل</span>
+  </header>
+
+  <!-- 1) الدخول واللوبيات -->
+  <section id="lobbyScreen" class="card">
+    <div class="row">
+      <input id="nameInput" class="grow" maxlength="20" placeholder="اسمك في اللعبة" autocomplete="off">
+      <button class="primary" id="connectBtn">دخول</button>
+    </div>
+    <div id="lobbyArea" hidden>
+      <div class="row" style="margin-bottom:8px">
+        <button class="primary" id="createBtn">＋ إنشاء غرفة</button>
+        <button class="alt" id="refreshBtn">تحديث</button>
+        <span class="muted" id="guestNote"></span>
+      </div>
+      <div id="lobbyList" style="display:grid;gap:8px"></div>
+    </div>
+  </section>
+
+  <!-- 2) غرفة الانتظار -->
+  <section id="roomScreen" class="card" hidden>
+    <div class="row"><b class="grow">غرفة الانتظار</b><button class="alt" id="leaveRoom">خروج</button></div>
+    <div id="roomPlayers" class="row"></div>
+    <div class="muted">محتاج من 2 لـ 4 لاعبين. صاحب الغرفة بيبدأ اللعبة.</div>
+    <button class="primary" id="startBtn" disabled>ابدأ اللعبة</button>
+  </section>
+
+  <!-- 3) اللعبة -->
+  <section id="gameScreen" hidden style="display:grid;gap:12px">
+    <div class="card">
+      <div class="row">
+        <span class="pill"><span class="dot" id="turnDot"></span><span id="turnName">—</span></span>
+        <span class="grow"></span>
+        <div id="dice" aria-live="polite">🎲</div>
+        <button class="primary" id="rollBtn" disabled>ارمي النرد</button>
+      </div>
+      <div class="muted" id="hint"></div>
+    </div>
+    <div id="boardBox"><svg id="board" viewBox="0 0 600 600" role="img" aria-label="لوحة اللودو"></svg></div>
+    <div class="card">
+      <div id="winBox" class="win" hidden></div>
+      <div id="playersBar" class="row"></div>
+      <div id="log" aria-live="polite"></div>
+      <button class="alt" id="leaveGame">مغادرة اللعبة</button>
+    </div>
+  </section>
+</div>
+<div id="toast" hidden></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const NS = 'http://www.w3.org/2000/svg';
+const COLORS = { red:'#E53935', green:'#2E9E48', yellow:'#F5B700', blue:'#1E73E8' };
+const COLOR_AR = { red:'الأحمر', green:'الأخضر', yellow:'الأصفر', blue:'الأزرق' };
+const START = { red:0, green:13, yellow:26, blue:39 };
+const QUAD = { red:[0,0], green:[9,0], yellow:[9,9], blue:[0,9] };
+const DICE_FACES = ['🎲','⚀','⚁','⚂','⚃','⚄','⚅'];
+
+/* ---- مسار الحلقة المشتركة: 52 مربع (col,row) مع عقارب الساعة، يبدأ من مربع بداية الأحمر ---- */
+const RING = (() => {
+  const r = [];
+  for (let c = 1; c <= 5; c++) r.push([c, 6]);
+  for (let y = 5; y >= 0; y--) r.push([6, y]);
+  r.push([7, 0], [8, 0]);
+  for (let y = 1; y <= 5; y++) r.push([8, y]);
+  for (let c = 9; c <= 14; c++) r.push([c, 6]);
+  r.push([14, 7], [14, 8]);
+  for (let c = 13; c >= 9; c--) r.push([c, 8]);
+  for (let y = 9; y <= 14; y++) r.push([8, y]);
+  r.push([7, 14], [6, 14]);
+  for (let y = 13; y >= 9; y--) r.push([6, y]);
+  for (let c = 5; c >= 0; c--) r.push([c, 8]);
+  r.push([0, 7], [0, 6]);
+  return r; // 52
+})();
+const SAFE = new Set([0, 13, 26, 39, 8, 21, 34, 47]);
+const HOME_COL = {
+  red: k => [1 + k, 7], green: k => [7, 1 + k], yellow: k => [13 - k, 7], blue: k => [7, 13 - k]
+};
+const FINISH = { red:[6.6,7.5], green:[7.5,6.6], yellow:[8.4,7.5], blue:[7.5,8.4] };
+const CELL = 40;
+
+/* ---- حالة العميل ---- */
+let socket = null, me = null, lobby = null, lobbies = [];
+const state = () => lobby && lobby.state;
+
+function el(tag, attrs = {}, parent) {
+  const n = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function toast(msg) {
+  const t = $('toast'); t.textContent = msg; t.hidden = false;
+  clearTimeout(toast.t); toast.t = setTimeout(() => { t.hidden = true; }, 3200);
+}
+function show(screen) {
+  $('lobbyScreen').hidden = screen !== 'lobby';
+  $('roomScreen').hidden = screen !== 'room';
+  $('gameScreen').hidden = screen !== 'game';
+}
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch { /* تجاهل */ } }
+};
+
+/* ---- رسم اللوحة الثابتة ---- */
+function drawBoardBase(svg) {
+  svg.textContent = '';
+  const cell = (c, r, fill, parent = svg) => el('rect', { x:c*CELL, y:r*CELL, width:CELL, height:CELL, fill, stroke:'#c9cde0', 'stroke-width':1 }, parent);
+  for (const [color, [qx, qy]] of Object.entries(QUAD)) {
+    el('rect', { x:qx*CELL, y:qy*CELL, width:6*CELL, height:6*CELL, fill:COLORS[color] }, svg);
+    el('rect', { x:(qx+1)*CELL, y:(qy+1)*CELL, width:4*CELL, height:4*CELL, rx:16, fill:'#fff' }, svg);
+    for (const [dx, dy] of [[1.5,1.5],[4.5,1.5],[1.5,4.5],[4.5,4.5]]) {
+      el('circle', { cx:(qx+dx)*CELL, cy:(qy+dy)*CELL, r:15, fill:COLORS[color], opacity:.25 }, svg);
+    }
+  }
+  RING.forEach(([c, r], i) => {
+    const owner = Object.keys(START).find(k => START[k] === i);
+    cell(c, r, owner ? COLORS[owner] : '#fff');
+    if (!owner && SAFE.has(i)) {
+      const t = el('text', { x:c*CELL+CELL/2, y:r*CELL+CELL/2+7, 'text-anchor':'middle', 'font-size':20, fill:'#8a8fb0' }, svg);
+      t.textContent = '★';
+    }
+  });
+  for (const color of Object.keys(COLORS)) {
+    for (let k = 0; k < 5; k++) { const [c, r] = HOME_COL[color](k); cell(c, r, COLORS[color]); }
+  }
+  // مركز اللوحة: 4 مثلثات ملونة
+  const cx = 7.5*CELL, cy = 7.5*CELL, a = 6*CELL, b = 9*CELL;
+  el('polygon', { points:`${a},${a} ${cx},${cy} ${a},${b}`, fill:COLORS.red }, svg);
+  el('polygon', { points:`${a},${a} ${cx},${cy} ${b},${a}`, fill:COLORS.green }, svg);
+  el('polygon', { points:`${b},${a} ${cx},${cy} ${b},${b}`, fill:COLORS.yellow }, svg);
+  el('polygon', { points:`${a},${b} ${cx},${cy} ${b},${b}`, fill:COLORS.blue }, svg);
+  el('g', { id:'pieces' }, svg);
+}
+
+function piecePos(color, rel, idx) {
+  if (rel === -1) { const [qx, qy] = QUAD[color]; return [[1.5,1.5],[4.5,1.5],[1.5,4.5],[4.5,4.5]][idx].map((v, i) => v + (i ? qy : qx)); }
+  if (rel <= 50) { const [c, r] = RING[(START[color] + rel) % 52]; return [c + .5, r + .5]; }
+  if (rel <= 55) { const [c, r] = HOME_COL[color](rel - 51); return [c + .5, r + .5]; }
+  const [fx, fy] = FINISH[color]; return [fx + (idx % 2) * .18 - .09, fy + (idx > 1 ? .18 : 0) - .09];
+}
+
+function renderPieces() {
+  const st = state(); if (!st) return;
+  const g = $('pieces'); g.textContent = '';
+  const myTurn = me && st.players[st.turnIndex]?.userId === me.userId && st.status === 'in_progress';
+  const stack = new Map();
+  for (const p of st.players) {
+    p.pieces.forEach((rel, idx) => {
+      let [x, y] = piecePos(p.color, rel, idx);
+      const key = rel === -1 || rel === 56 ? `${p.color}:${rel}:${idx}` : `${Math.round(x*10)}:${Math.round(y*10)}`;
+      const n = stack.get(key) || 0; stack.set(key, n + 1);
+      if (n) { x += n * .16; y -= n * .16; }
+      const isMine = me && p.userId === me.userId;
+      const legal = myTurn && isMine && st.phase === 'move' && st.legalMoves.includes(idx);
+      const c = el('circle', { class:'piece' + (legal ? ' legal' : ''), cx:x*CELL, cy:y*CELL, r:14, fill:COLORS[p.color], stroke: legal ? '#fff' : '#14172B', 'stroke-width':2.5 }, g);
+      const t = el('text', { x:x*CELL, y:y*CELL+5, 'text-anchor':'middle', 'font-size':14, 'font-weight':700, fill:'#fff', 'pointer-events':'none' }, g);
+      t.textContent = idx + 1;
+      if (legal) c.addEventListener('click', () => socket.emit('ludo:move', { pieceIndex: idx }));
+    });
+  }
+}
+
+function renderGame() {
+  const st = state(); if (!st) return;
+  const cur = st.players[st.turnIndex];
+  const myTurn = me && cur.userId === me.userId && st.status === 'in_progress';
+  $('turnDot').style.background = COLORS[cur.color];
+  $('turnName').textContent = st.status === 'finished' ? 'انتهت اللعبة' : (myTurn ? 'دورك!' : `دور ${cur.username}`);
+  $('rollBtn').disabled = !(myTurn && st.phase === 'roll');
+  $('hint').textContent = myTurn ? (st.phase === 'roll' ? 'ارمي النرد' : 'اختار مهرة مضيئة تحركها') : '';
+  $('dice').textContent = st.lastDiceRoll ? DICE_FACES[st.lastDiceRoll.value] : '🎲';
+
+  const bar = $('playersBar'); bar.textContent = '';
+  for (const p of st.players) {
+    const pill = document.createElement('span'); pill.className = 'pill';
+    const dot = document.createElement('span'); dot.className = 'dot'; dot.style.background = COLORS[p.color];
+    const done = p.pieces.filter(r => r === 56).length;
+    pill.append(dot, `${p.username}${me && p.userId === me.userId ? ' (أنت)' : ''} · ${done}/4`);
+    bar.appendChild(pill);
+  }
+  const win = $('winBox');
+  if (st.status === 'finished') {
+    const w = st.players.find(p => p.userId === st.winner);
+    win.hidden = false; win.textContent = w ? `🏆 الفائز: ${w.username} (${COLOR_AR[w.color]})` : 'انتهت اللعبة';
+  } else win.hidden = true;
+  renderPieces();
+}
+
+function logLine(text) {
+  const d = document.createElement('div'); d.textContent = text;
+  const box = $('log'); box.appendChild(d); box.scrollTop = box.scrollHeight;
+  while (box.childNodes.length > 40) box.removeChild(box.firstChild);
+}
+const nameOf = uid => (state()?.players.find(p => p.userId === uid) || {}).username || 'لاعب';
+
+function renderEvents(events) {
+  for (const e of events) {
+    switch (e.type) {
+      case 'dice_rolled': logLine(`🎲 ${nameOf(e.userId)} رمى ${e.value}`); break;
+      case 'piece_captured': logLine(`💥 ${nameOf(e.by)} أكل مهرة ${nameOf(e.userId)}`); break;
+      case 'piece_finished': logLine(`🏁 ${nameOf(e.userId)} وصّل مهرة للنهاية`); break;
+      case 'no_legal_moves': logLine(`⛔ ${nameOf(e.userId)} مفيش حركة متاحة`); break;
+      case 'extra_turn': logLine(`➕ دور إضافي لـ ${nameOf(e.userId)}`); break;
+      case 'three_sixes_forfeit': logLine(`⚠️ ${nameOf(e.userId)} ٣ سكستات ورا بعض — ضاع الدور`); break;
+      case 'game_finished': logLine(`🏆 الفائز: ${nameOf(e.winner)}`); break;
+      default: break;
+    }
+  }
+}
+
+/* ---- اللوبي ---- */
+function renderLobbies() {
+  const box = $('lobbyList'); box.textContent = '';
+  const list = lobbies.filter(l => l.gameType === 'ludo');
+  if (!list.length) { const d = document.createElement('div'); d.className = 'muted'; d.textContent = 'مفيش غرف مفتوحة. اعمل غرفة جديدة!'; box.appendChild(d); return; }
+  for (const l of list) {
+    const item = document.createElement('div'); item.className = 'lobby-item';
+    const info = document.createElement('div'); info.className = 'grow';
+    info.textContent = `${l.players.map(p => p.username).join('، ')} (${l.players.length}/${l.maxPlayers})`;
+    const btn = document.createElement('button'); btn.className = 'primary'; btn.textContent = 'انضم';
+    btn.disabled = l.players.length >= l.maxPlayers;
+    btn.addEventListener('click', () => socket.emit('games:join', l.id));
+    item.append(info, btn); box.appendChild(item);
+  }
+}
+
+function renderRoom() {
+  const box = $('roomPlayers'); box.textContent = '';
+  for (const p of lobby.players) {
+    const pill = document.createElement('span'); pill.className = 'pill';
+    pill.textContent = p.username + (p.userId === lobby.hostUserId ? ' 👑' : '') + (me && p.userId === me.userId ? ' (أنت)' : '');
+    box.appendChild(pill);
+  }
+  const isHost = me && lobby.hostUserId === me.userId;
+  $('startBtn').disabled = !(isHost && lobby.players.length >= 2);
+  $('startBtn').textContent = isHost ? 'ابدأ اللعبة' : 'في انتظار صاحب الغرفة…';
+}
+
+/* ---- الاتصال ---- */
+function connect() {
+  const name = $('nameInput').value.trim().slice(0, 20);
+  if (!name) return toast('اكتب اسمك الأول');
+  store.set('lamha_name', name);
+  const token = store.get('lamha_token') || undefined; // لو مسجّل دخول، النقاط بتتحسب لحسابك
+  socket = io('/games', { auth: { username: name, token }, transports: ['websocket', 'polling'] });
+
+  socket.on('connect', () => { $('conn').textContent = 'متصل ✅'; socket.emit('games:list', 'ludo'); });
+  socket.on('disconnect', () => { $('conn').textContent = 'انقطع الاتصال'; });
+  socket.on('connect_error', () => toast('تعذّر الاتصال بالسيرفر'));
+  socket.on('games:me', m => {
+    me = m; $('lobbyArea').hidden = false;
+    $('guestNote').textContent = m.authenticated ? '' : 'أنت زائر — النقاط للمسجّلين فقط';
+  });
+  socket.on('games:list', l => { lobbies = l; renderLobbies(); });
+  socket.on('games:lobby', l => {
+    lobby = l; renderRoom();
+    if (l.status === 'waiting') show('room');
+  });
+  socket.on('games:state', l => {
+    const first = !lobby || !lobby.state;
+    lobby = l;
+    if (first) { drawBoardBase($('board')); $('log').textContent = ''; }
+    show('game'); renderGame();
+  });
+  socket.on('games:events', ({ events }) => renderEvents(events || []));
+  socket.on('games:rewards', r => toast(`🎁 كسبت ${r.delta} نقطة — رصيدك ${r.balance}`));
+  socket.on('games:error', e => toast(e.error || 'حصل خطأ'));
+  $('connectBtn').disabled = true; $('nameInput').disabled = true;
+}
+
+function leave() {
+  if (socket) socket.emit('games:leave');
+  lobby = null; show('lobby'); socket && socket.emit('games:list', 'ludo');
+}
+
+$('connectBtn').addEventListener('click', connect);
+$('nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') connect(); });
+$('createBtn').addEventListener('click', () => socket.emit('games:create', 'ludo'));
+$('refreshBtn').addEventListener('click', () => socket.emit('games:list', 'ludo'));
+$('startBtn').addEventListener('click', () => socket.emit('games:start'));
+$('rollBtn').addEventListener('click', () => socket.emit('ludo:roll'));
+$('leaveRoom').addEventListener('click', leave);
+$('leaveGame').addEventListener('click', leave);
+$('nameInput').value = store.get('lamha_name') || '';
+show('lobby');
+})();
+</script>
+</body>
+</html>

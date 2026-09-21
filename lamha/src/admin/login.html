@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>دخول الأدمن</title>
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0C0E1B;color:#fff;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+  form{background:#171A30;padding:28px;border-radius:16px;width:min(360px,92vw);display:grid;gap:14px}
+  h1{margin:0;font-size:20px}
+  input,button{font:inherit;padding:12px;border-radius:10px;border:1px solid #333a66;background:#0C0E1B;color:#fff}
+  button{background:#FE2C55;border:0;font-weight:700;cursor:pointer}
+  #msg{color:#ffb4c0;min-height:1.2em;font-size:14px}
+</style>
+</head>
+<body>
+<form id="f" autocomplete="off">
+  <h1>🔒 لوحة التحكم</h1>
+  <input id="pw" type="password" placeholder="كلمة السر" required autofocus>
+  <button>دخول</button>
+  <div id="msg" role="alert"></div>
+</form>
+<script>
+document.getElementById('f').addEventListener('submit', async e => {
+  e.preventDefault();
+  const msg = document.getElementById('msg');
+  msg.textContent = '';
+  try {
+    const r = await fetch('/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Lamha-Admin': '1' }, body: JSON.stringify({ password: document.getElementById('pw').value }) });
+    const j = await r.json().catch(() => ({}));
+    if (r.ok) location.href = '/admin'; else msg.textContent = j.error || 'فشل الدخول';
+  } catch { msg.textContent = 'تعذّر الاتصال بالسيرفر'; }
+});
+</script>
+</body>
+</html>

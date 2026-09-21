@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FE2C55">
+<title>لمحة - أقوى عروض أمازون وتيمو وعلي إكسبريس</title>
+<meta name="description" content="عروض يومية محدّثة من Amazon وTemu وAliExpress.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F5FA;
+    --surface: #FFFFFF;
+    --ink: #14172B;
+    --on-ink: #FFFFFF;
+    --muted: #5D6280;
+    --line: #E3E5EF;
+    --brand: #FE2C55;
+    --flash: #FFD23F;
+    --panel: #14172B;
+    --panel-ink: #FFFFFF;
+    --ad-bg: #EAEDF7;
+    --ad-line: #B9BFDA;
+    --ad-h: 0px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0E1B;
+      --surface: #161A2D;
+      --ink: #F2F3FA;
+      --on-ink: #0C0E1B;
+      --muted: #A3A8C4;
+      --line: #2A2F4C;
+      --panel: #1E2347;
+      --ad-bg: #1A1F38;
+      --ad-line: #3A4068;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body {
+    font-family: 'Readex Pro', 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.6;
+    padding-bottom: calc(var(--ad-h) + 24px);
+    -webkit-text-size-adjust: 100%;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+  :focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* ---------- Ad banners ---------- */
+  .ad {
+    display: flex; align-items: center; gap: 10px; padding: 8px 14px;
+    background: var(--ad-bg); border-block: 1px dashed var(--ad-line); font-size: .85rem;
+  }
+  .ad-tag { display: inline-flex; align-items: baseline; gap: 6px; flex: none; }
+  .ad-tag b { background: var(--ink); color: var(--on-ink); padding: 1px 9px; border-radius: 6px; font-weight: 600; font-size: .78rem; }
+  .ad-tag i { font-style: normal; color: var(--muted); font-size: .75rem; }
+  .ad-text { flex: 1; min-width: 0; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ad-cta { flex: none; font-weight: 600; color: var(--brand); border: 1px solid currentColor; padding: 3px 12px; border-radius: 99px; }
+  .ad-top { position: sticky; top: 0; z-index: 30; }
+  .ad-bottom {
+    position: fixed; inset-inline: 0; bottom: 0; z-index: 35;
+    border-bottom: 0; padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -6px 20px rgba(20,23,43,.08);
+  }
+  .ad-close { flex: none; width: 28px; height: 28px; border-radius: 50%; color: var(--muted); font-size: .9rem; }
+  .ad-close:hover { background: var(--line); }
+  body.no-bottom-ad .ad-bottom { display: none; }
+
+  .sample-strip { background: var(--flash); color: #14172B; text-align: center; font-size: .82rem; font-weight: 500; padding: 6px 12px; }
+
+  /* ---------- Header ---------- */
+  .site-head { display: flex; align-items: center; gap: 12px; padding-top: 16px; padding-bottom: 8px; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; font-size: 1.7rem; font-weight: 700; letter-spacing: -.3px; }
+  .mark { width: 34px; height: 34px; border-radius: 10px; background: var(--brand); color: #fff; display: grid; place-items: center; }
+  .mark svg { width: 20px; height: 20px; }
+  .tag { flex: 1; color: var(--muted); font-size: .85rem; }
+  @media (max-width: 560px) { .tag { display: none; } .site-head { justify-content: space-between; } }
+  .btn-top {
+    background: var(--ink); color: var(--on-ink); font-weight: 600; font-size: .88rem;
+    padding: 9px 18px; border-radius: 99px;
+  }
+
+  /* ---------- Flash deals (hero) ---------- */
+  .flash { background: var(--panel); color: var(--panel-ink); border-radius: 26px; padding: 20px 0 18px; margin-top: 10px; overflow: hidden; }
+  .flash-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 0 20px 14px; }
+  .flash-head h2 { font-size: 1.5rem; font-weight: 700; line-height: 1.25; }
+  .flash-head p { color: rgba(255,255,255,.65); font-size: .85rem; margin-top: 2px; }
+  .timer { display: flex; align-items: center; gap: 6px; direction: ltr; }
+  .timer .t { background: rgba(255,255,255,.1); border-radius: 12px; min-width: 58px; padding: 6px 8px 4px; text-align: center; }
+  .timer b { display: block; font-size: 1.65rem; font-weight: 700; color: var(--flash); line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .timer small { font-size: .68rem; color: rgba(255,255,255,.65); }
+  .timer .sep { color: rgba(255,255,255,.4); font-weight: 700; }
+  .timer-done { color: var(--flash); font-weight: 600; direction: rtl; }
+  .flash-row { display: flex; gap: 12px; overflow-x: auto; padding: 4px 20px 6px; scroll-snap-type: x proximity; }
+  .flash-row::-webkit-scrollbar { height: 6px; }
+  .flash-row::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 6px; }
+  .flash-row .pcard { flex: 0 0 200px; scroll-snap-align: start; border: 0; }
+
+  /* ---------- Section titles ---------- */
+  .sec-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 30px 0 12px; }
+  .sec-title h2 { font-size: 1.3rem; font-weight: 700; }
+  .sec-title span { color: var(--muted); font-size: .8rem; }
+
+  /* ---------- Reels ---------- */
+  .reels { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+  .reel { flex: 0 0 132px; height: 210px; border-radius: 18px; position: relative; overflow: hidden; background: linear-gradient(160deg, var(--line), var(--ad-bg)); scroll-snap-align: start; }
+  .reel img { width: 100%; height: 100%; object-fit: cover; }
+  .reel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.8), transparent 55%); }
+  .reel .cap { position: absolute; z-index: 2; inset-inline: 10px; bottom: 10px; color: #fff; font-size: .78rem; font-weight: 500; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .reel .off { z-index: 2; }
+
+  /* ---------- Filters ---------- */
+  .filters { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+  .chip { flex: none; padding: 7px 16px; border-radius: 99px; background: var(--surface); border: 1px solid var(--line); font-size: .86rem; font-weight: 500; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .chips.stores .chip { font-size: .8rem; padding: 4px 12px; }
+
+  /* ---------- Product cards ---------- */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+  @media (min-width: 960px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+  .pcard { color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .pimg { position: relative; aspect-ratio: 1/1; background: linear-gradient(160deg, var(--line), var(--ad-bg)); }
+  .pimg img { width: 100%; height: 100%; object-fit: cover; }
+  .off {
+    position: absolute; top: 10px; inset-inline-start: 10px; background: var(--brand); color: #fff;
+    font-weight: 700; font-size: .85rem; padding: 2px 10px; border-radius: 8px 8px 8px 2px; font-variant-numeric: tabular-nums; direction: ltr;
+  }
+  .store { position: absolute; bottom: 10px; inset-inline-end: 10px; background: rgba(20,23,43,.82); color: #fff; font-size: .72rem; font-weight: 500; padding: 2px 9px; border-radius: 6px; }
+  .pbody { padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .pbody h3 { font-size: .9rem; font-weight: 500; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.9em; color: var(--ink); }
+  .prices { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .prices b { font-size: 1.1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .prices s { color: var(--muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
+  .buy { display: block; text-align: center; background: var(--brand); color: #fff; font-weight: 600; font-size: .88rem; padding: 9px 8px; border-radius: 12px; margin-top: 4px; }
+  .buy:hover { filter: brightness(.92); }
+  .flash-row .pcard .pbody h3 { color: var(--ink); }
+
+  /* ---------- Sponsors ---------- */
+  .sponsors { margin-top: 34px; padding: 18px 16px 16px; border: 1px dashed var(--ad-line); border-radius: 22px; background: var(--ad-bg); }
+  .sponsors .sec-title { margin: 0 0 12px; }
+  .sp-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 720px) { .sp-grid { grid-template-columns: repeat(3, 1fr); } }
+  .sp-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .sp-card .ad-tag { margin-bottom: 2px; }
+  .sp-card h3 { font-size: 1rem; font-weight: 600; }
+  .sp-card p { color: var(--muted); font-size: .85rem; flex: 1; }
+  .sp-card .ad-cta { align-self: flex-start; margin-top: 6px; }
+  .sp-card.slot { border-style: dashed; background: transparent; }
+
+  .empty { text-align: center; color: var(--muted); padding: 30px 0; }
+
+  /* ---------- Footer ---------- */
+  footer { margin-top: 44px; padding: 26px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+  footer .social { display: flex; gap: 10px; margin-bottom: 14px; }
+  footer .social a { background: var(--surface); border: 1px solid var(--line); color: var(--ink); padding: 6px 16px; border-radius: 99px; font-weight: 500; }
+  .legal { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; color: var(--ink); line-height: 1.75; }
+  .legal p + p { margin-top: 6px; color: var(--muted); font-size: .78rem; }
+
+  /* ---------- Overlay / share ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(8,10,25,.6); display: none; align-items: flex-end; justify-content: center; z-index: 60; }
+  .overlay.open { display: flex; }
+  .sheet { background: var(--surface); width: 100%; max-width: 540px; border-radius: 24px 24px 0 0; padding: 18px 16px calc(22px + env(safe-area-inset-bottom, 0px)); max-height: 90vh; overflow-y: auto; }
+  .sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .sheet-head h3 { font-size: 1.1rem; font-weight: 700; }
+  .x { width: 34px; height: 34px; border-radius: 50%; background: var(--bg); }
+  .sheet textarea { width: 100%; min-height: 130px; resize: vertical; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; font-family: inherit; font-size: .88rem; line-height: 1.6; }
+  .plats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 12px; }
+  .plats button, .sheet .wide { background: var(--bg); border: 1px solid var(--line); padding: 11px 12px; border-radius: 12px; font-weight: 500; font-size: .88rem; text-align: start; }
+  .plats button:hover, .sheet .wide:hover { border-color: var(--brand); }
+  .sheet .wide { width: 100%; margin-top: 10px; text-align: center; }
+  .sheet .wide.primary { background: var(--brand); color: #fff; border-color: var(--brand); font-weight: 600; }
+  .note { color: var(--muted); font-size: .78rem; margin-top: 10px; }
+
+  /* ---------- Chat ---------- */
+  .fab {
+    position: fixed; inset-inline-start: 16px; bottom: calc(16px + var(--ad-h)); z-index: 45;
+    display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--on-ink);
+    padding: 12px 18px; border-radius: 99px; font-weight: 600; font-size: .9rem; box-shadow: 0 8px 24px rgba(20,23,43,.28);
+  }
+  .fab .dot { width: 9px; height: 9px; border-radius: 50%; background: #2ECC71; }
+  .chat {
+    position: fixed; inset-inline-start: 16px; bottom: calc(76px + var(--ad-h)); z-index: 45;
+    width: min(370px, calc(100vw - 32px)); max-height: min(560px, 72vh);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 22px; display: none; flex-direction: column; overflow: hidden;
+    box-shadow: 0 16px 48px rgba(20,23,43,.25);
+  }
+  .chat.open { display: flex; }
+  .chat-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ink); color: var(--on-ink); }
+  .chat-head b { font-weight: 600; }
+  .chat-head small { display: block; font-size: .72rem; opacity: .7; font-weight: 400; }
+  .chat-head .x { background: rgba(255,255,255,.14); color: inherit; }
+  .msgs { padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; flex: 1; font-size: .88rem; }
+  .msg { padding: 8px 12px; border-radius: 16px; max-width: 90%; line-height: 1.55; }
+  .msg.bot { background: var(--bg); align-self: flex-start; border-end-start-radius: 4px; }
+  .msg.me { background: var(--brand); color: #fff; align-self: flex-end; border-end-end-radius: 4px; }
+  .mini { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 8px; margin-top: 8px; }
+  .mini img { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; flex: none; background: var(--line); }
+  .mini div { flex: 1; min-width: 0; font-size: .8rem; }
+  .mini b { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mini span { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .mini .buy { margin: 0; padding: 6px 12px; font-size: .78rem; border-radius: 99px; flex: none; }
+  .quick { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 10px; }
+  .quick button { background: var(--bg); border: 1px solid var(--line); padding: 5px 12px; border-radius: 99px; font-size: .8rem; }
+  .chat form { display: flex; gap: 8px; padding: 10px; border-top: 1px solid var(--line); }
+  .chat input { flex: 1; min-width: 0; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 99px; padding: 9px 14px; font-family: inherit; font-size: .9rem; }
+  .chat form button { background: var(--brand); color: #fff; padding: 0 16px; border-radius: 99px; font-weight: 600; font-size: .88rem; }
+
+  .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(90px + var(--ad-h)); background: var(--ink); color: var(--on-ink); padding: 10px 18px; border-radius: 99px; font-weight: 500; font-size: .88rem; z-index: 70; display: none; max-width: 90vw; text-align: center; }
+  .toast.show { display: block; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<aside class="ad ad-top" id="adTop" aria-label="إعلان ممول"></aside>
+<div class="sample-strip" id="sampleStrip" hidden>⚠️ بيانات تجريبية: الأسعار والروابط هنا أمثلة فقط. استبدل deals.json ببياناتك الحقيقية قبل النشر.</div>
+
+<header class="site-head wrap">
+  <a class="brand" href="./" aria-label="لمحة">
+    <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg></span>
+    لمحة
+  </a>
+  <p class="tag">عروض Amazon وTemu وAliExpress في مكان واحد</p>
+  <button class="btn-top" id="shareTop">مشاركة</button>
+</header>
+
+<main class="wrap">
+
+  <section class="flash" id="flashSec" aria-labelledby="flashTitle">
+    <div class="flash-head">
+      <div>
+        <h2 id="flashTitle">⚡ صفقات اليوم السريعة</h2>
+        <p>خصومات لفترة محدودة، الأسعار بتتغير بسرعة</p>
+      </div>
+      <div class="timer" id="timer" role="timer" aria-label="الوقت المتبقي على الصفقات">
+        <div class="t"><b id="tH">00</b><small>ساعة</small></div><span class="sep">:</span>
+        <div class="t"><b id="tM">00</b><small>دقيقة</small></div><span class="sep">:</span>
+        <div class="t"><b id="tS">00</b><small>ثانية</small></div>
+      </div>
+    </div>
+    <div class="flash-row" id="flashRow"></div>
+  </section>
+
+  <section id="reelsSec" hidden>
+    <div class="sec-title"><h2>🎬 ريلز اليوم</h2></div>
+    <div class="reels" id="reels"></div>
+  </section>
+
+  <section class="filters" aria-label="تصفية العروض">
+    <div class="chips" id="catChips"></div>
+    <div class="chips stores" id="storeChips"></div>
+  </section>
+
+  <div class="sec-title" id="titleMain"><h2>عروض اليوم</h2><span id="updated"></span></div>
+  <div class="grid" id="grid1"></div>
+
+  <section class="sponsors" aria-labelledby="spTitle">
+    <div class="sec-title">
+      <h2 id="spTitle">عروض الرعاة والشركاء</h2>
+      <span>محتوى ممول من شركاء لمحة</span>
+    </div>
+    <div class="sp-grid" id="spGrid"></div>
+  </section>
+
+  <div class="sec-title" id="titleMore" hidden><h2>المزيد من العروض</h2></div>
+  <div class="grid" id="grid2"></div>
+  <p class="empty" id="empty" hidden>مفيش عروض في التصنيف ده دلوقتي. جرّب تصنيف تاني.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="social">
+      <a href="https://www.youtube.com/@DailyRecipesEg" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://facebook.com/popsi.popsi.640084" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <div class="legal">
+      <p>تنويه: بعض الروابط داخل التطبيق هي روابط أفيليت (تسويق بالعمولة)، نحصل على عمولة بسيطة عند الشراء من خلالها دون أي تكلفة إضافية عليك.</p>
+      <p>As an Amazon Associate I earn from qualifying purchases. الأسعار والتوفر قابلة للتغيير في أي وقت، والسعر النهائي هو المعروض في صفحة المتجر وقت الشراء. الإعلانات والعروض الموسومة بـ«إعلان ممول» أو Sponsored مدفوعة من أصحابها.</p>
+    </div>
+    <p style="margin-top:14px">جميع الحقوق محفوظة © لمحة 2026</p>
+  </div>
+</footer>
+
+<aside class="ad ad-bottom" id="adBottom" aria-label="إعلان ممول"></aside>
+
+<button class="fab" id="fab" aria-expanded="false" aria-controls="chat"><span class="dot" aria-hidden="true"></span>مساعد لمحة</button>
+<section class="chat" id="chat" aria-label="مساعد لمحة">
+  <div class="chat-head">
+    <div><b>مساعد لمحة</b><small>بيرشحلك أنسب العروض</small></div>
+    <button class="x" id="chatClose" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="quick" id="quick">
+    <button>أفضل خصم دلوقتي</button>
+    <button>سماعات تحت 1500</button>
+    <button>أرخص حاجة للمطبخ</button>
+    <button>عروض تيمو</button>
+  </div>
+  <form id="chatForm">
+    <input id="chatInput" type="text" placeholder="اكتب اللي بتدور عليه..." autocomplete="off" aria-label="اكتب سؤالك">
+    <button type="submit">إرسال</button>
+  </form>
+</section>
+
+<div class="overlay" id="shareOverlay" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+  <div class="sheet">
+    <div class="sheet-head"><h3 id="shareTitle">شارك أقوى العروض</h3><button class="x" id="shareClose" aria-label="إغلاق">✕</button></div>
+    <textarea id="shareText" aria-label="نص المنشور"></textarea>
+    <button class="wide primary" id="nativeShare" hidden>مشاركة سريعة من الموبايل</button>
+    <div class="plats" id="plats"></div>
+    <button class="wide" id="copyPost">📋 نسخ النص</button>
+    <p class="note">إنستجرام وتيك توك ويوتيوب مفيهمش مشاركة مباشرة من المتصفح: هننسخ النص وتلزقه هناك.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ============================================================
+   الإعدادات
+   ============================================================ */
+const CONFIG = {
+  DEALS_URL: '/api/deals',            // بيرجّع بيانات deals.json عن طريق سيرفر لمحة (src/routes/deals.routes.js)
+  ASSISTANT_ENDPOINT: '',             // اختياري: رابط الـ backend لو عايز ذكاء اصطناعي حقيقي (شوف الشرح)
+  AD_CONTACT_EMAIL: 'ads@your-domain.com'
+};
+
+// نسخة احتياطية من deals.json (تتحقن تلقائيًا) عشان الصفحة تشتغل حتى لو الملف مش متاح
+const FALLBACK = {"sample":true,"updatedAt":"2026-09-20T06:00:00+03:00","flashEndsAt":null,"ads":{"top":null,"bottom":null},"sponsors":[],"products":[{"id":"p1","store":"amazon","category":"electronics","currency":"EGP","title":"سماعات بلوتوث لاسلكية بخاصية عزل الضوضاء","image":"https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=500&h=500&fit=crop","price":1499,"oldPrice":2499,"flash":true,"reel":true,"url":"https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"},{"id":"p2","store":"amazon","category":"electronics","currency":"EGP","title":"سبيكر بلوتوث محمول مقاوم للماء","image":"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=500&fit=crop","price":899,"oldPrice":1349,"flash":true,"url":"https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"},{"id":"p3","store":"aliexpress","category":"electronics","currency":"EGP","title":"ساعة ذكية بشاشة AMOLED وسوار قابل للتبديل","image":"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop","price":690,"oldPrice":1150,"flash":true,"url":"https://s.click.aliexpress.com/e/REPLACE"},{"id":"p4","store":"amazon","category":"phones","currency":"EGP","title":"هاتف ذكي بذاكرة 128 جيجا وكاميرا ثلاثية","image":"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop","price":8999,"oldPrice":10499,"reel":true,"url":"https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"},{"id":"p5","store":"aliexpress","category":"phones","currency":"EGP","title":"شاحن سريع 65 واط مع كابل مضفر","image":"https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=500&h=500&fit=crop","price":180,"oldPrice":320,"url":"https://s.click.aliexpress.com/e/REPLACE"},{"id":"p6","store":"temu","category":"home","currency":"EGP","title":"طقم أدوات مطبخ ستانلس ستيل 12 قطعة","image":"https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&h=500&fit=crop","price":260,"oldPrice":520,"flash":true,"url":"https://temu.to/k/REPLACE"},{"id":"p7","store":"amazon","category":"home","currency":"EGP","title":"ماكينة قهوة بالكبسولات","image":"https://images.unsplash.com/photo-1572119865084-43c285814d63?w=500&h=500&fit=crop","price":3200,"oldPrice":4900,"flash":true,"reel":true,"url":"https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"},{"id":"p8","store":"temu","category":"fashion","currency":"EGP","title":"شنطة كتف عصرية بحزام قابل للتعديل","image":"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&h=500&fit=crop","price":240,"oldPrice":480,"url":"https://temu.to/k/REPLACE"},{"id":"p9","store":"aliexpress","category":"fashion","currency":"EGP","title":"حذاء رياضي خفيف للجري والمشي","image":"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop","price":780,"oldPrice":1350,"reel":true,"url":"https://s.click.aliexpress.com/e/REPLACE"},{"id":"p10","store":"amazon","category":"beauty","currency":"EGP","title":"سيروم فيتامين C للوجه","image":"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&h=500&fit=crop","price":420,"oldPrice":640,"reel":true,"url":"https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"},{"id":"p11","store":"temu","category":"beauty","currency":"EGP","title":"منظم مكياج شفاف متعدد الأدراج","image":"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&h=500&fit=crop","price":150,"oldPrice":310,"url":"https://temu.to/k/REPLACE"},{"id":"p12","store":"amazon","category":"home","currency":"EGP","title":"غسالة أوتوماتيك 8 كجم","image":"https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500&h=500&fit=crop","price":14500,"oldPrice":17900,"url":"https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"}]};
+
+const STORES = {
+  amazon:     { name: 'Amazon' },
+  temu:       { name: 'Temu' },
+  aliexpress: { name: 'AliExpress' }
+};
+const CATS = { all: 'الكل', electronics: 'إلكترونيات', phones: 'موبايلات', home: 'منزل ومطبخ', fashion: 'أزياء', beauty: 'جمال' };
+
+/* ============================================================
+   أدوات
+   ============================================================ */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const safeUrl = u => { try { const x = new URL(u); return ['https:', 'http:', 'mailto:'].includes(x.protocol) ? x.href : '#'; } catch { return '#'; } };
+const safeApp = u => {
+  if (typeof u !== 'string') return '';
+  const m = u.match(/^([a-z][a-z0-9+.-]*):\/\//i);
+  return m && !['javascript', 'data', 'vbscript', 'http', 'https'].includes(m[1].toLowerCase()) ? u : '';
+};
+const money = (n, c) => Number(n).toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' ' + (!c || c === 'EGP' ? 'ج.م' : c);
+const disc = p => (p.oldPrice > p.price ? Math.round((1 - p.price / p.oldPrice) * 100) : 0); // الخصم بيتحسب دايمًا من الأسعار
+const pageUrl = () => location.href.split('#')[0];
+const pad = n => String(n).padStart(2, '0');
+
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch {
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch {}
+    ta.remove(); return ok;
+  }
+}
+
+/* ============================================================
+   البيانات
+   ============================================================ */
+let data = { products: [], sponsors: [], ads: {} };
+let byId = {};
+
+async function loadDeals() {
+  const day = new Date().toISOString().slice(0, 10);
+  try {
+    const r = await fetch(CONFIG.DEALS_URL + '?d=' + day, { cache: 'no-cache' });
+    if (!r.ok) throw new Error('bad status');
+    return await r.json();
+  } catch { return FALLBACK; }
+}
+
+function clean(raw) {
+  const products = (Array.isArray(raw.products) ? raw.products : []).filter(p =>
+    p && p.id && p.title && STORES[p.store] && Number(p.price) > 0 && /^https?:\/\//i.test(p.url || '')
+  ).map(p => ({ ...p, price: Number(p.price), oldPrice: Number(p.oldPrice) || 0, category: CATS[p.category] ? p.category : 'home' }));
+  return {
+    sample: !!raw.sample,
+    updatedAt: raw.updatedAt || null,
+    flashEndsAt: raw.flashEndsAt || null,
+    ads: raw.ads || {},
+    sponsors: Array.isArray(raw.sponsors) ? raw.sponsors : [],
+    products
+  };
+}
+
+/* ============================================================
+   الإعلانات
+   ============================================================ */
+function renderAd(el, ad, closable) {
+  const close = closable ? '<button class="ad-close" id="adClose" aria-label="إغلاق الإعلان">✕</button>' : '';
+  if (ad && ad.text) {
+    el.innerHTML =
+      '<span class="ad-tag"><b>إعلان ممول</b><i>Sponsored</i></span>' +
+      `<span class="ad-text">${esc(ad.text)}</span>` +
+      (ad.url ? `<a class="ad-cta" href="${esc(safeUrl(ad.url))}" target="_blank" rel="sponsored noopener">${esc(ad.cta || 'اعرف أكتر')}</a>` : '') + close;
+  } else {
+    el.innerHTML =
+      '<span class="ad-tag"><b>مساحة إعلانية</b></span><span class="ad-text">متاحة للإعلان</span>' +
+      `<a class="ad-cta" href="mailto:${esc(CONFIG.AD_CONTACT_EMAIL)}">أعلن معنا</a>` + close;
+  }
+}
+function setAdHeight() {
+  const open = !document.body.classList.contains('no-bottom-ad');
+  const h = open ? $('#adBottom').offsetHeight : 0;
+  document.documentElement.style.setProperty('--ad-h', h + 'px');
+}
+function renderSponsors() {
+  const real = data.sponsors.slice(0, 3);
+  let html = real.map(s => `
+    <article class="sp-card">
+      <span class="ad-tag"><b>إعلان ممول</b><i>Sponsored</i></span>
+      <h3>${esc(s.name)}</h3><p>${esc(s.tagline || '')}</p>
+      <a class="ad-cta" href="${esc(safeUrl(s.url))}" target="_blank" rel="sponsored noopener">${esc(s.cta || 'اعرف أكتر')}</a>
+    </article>`).join('');
+  for (let i = real.length; i < 3; i++) {
+    html += `
+    <article class="sp-card slot">
+      <span class="ad-tag"><b>مساحة إعلانية</b></span>
+      <h3>مساحة متاحة للشركاء</h3><p>اعرض منتجك أو عرضك أمام زوار لمحة.</p>
+      <a class="ad-cta" href="mailto:${esc(CONFIG.AD_CONTACT_EMAIL)}">أعلن معنا</a>
+    </article>`;
+  }
+  $('#spGrid').innerHTML = html;
+}
+
+/* ============================================================
+   المنتجات
+   ============================================================ */
+function card(p, cls = '') {
+  const d = disc(p), st = STORES[p.store], app = safeApp(p.appLink);
+  return `
+  <article class="pcard ${cls}">
+    <div class="pimg">
+      <img src="${esc(p.image)}" alt="" loading="lazy" onerror="this.remove()">
+      ${d >= 5 ? `<span class="off">-${d}%</span>` : ''}
+      <span class="store">${esc(st.name)}</span>
+    </div>
+    <div class="pbody">
+      <h3>${esc(p.title)}</h3>
+      <div class="prices"><b>${money(p.price, p.currency)}</b>${p.oldPrice > p.price ? `<s>${money(p.oldPrice, p.currency)}</s>` : ''}</div>
+      <a class="buy" href="${esc(safeUrl(p.url))}" target="_blank" rel="sponsored noopener"${app ? ` data-app="${esc(app)}"` : ''}>اشتري من ${esc(st.name)}</a>
+    </div>
+  </article>`;
+}
+
+const state = { cat: 'all', store: 'all' };
+
+function renderFilters() {
+  $('#catChips').innerHTML = Object.entries(CATS).map(([k, v]) =>
+    `<button class="chip" data-cat="${k}" aria-pressed="${state.cat === k}">${v}</button>`).join('');
+  const stores = [['all', 'كل المتاجر'], ...Object.entries(STORES).map(([k, v]) => [k, v.name])];
+  $('#storeChips').innerHTML = stores.map(([k, v]) =>
+    `<button class="chip" data-store="${k}" aria-pressed="${state.store === k}">${v}</button>`).join('');
+}
+
+function renderCatalog() {
+  const list = data.products.filter(p =>
+    (state.cat === 'all' || p.category === state.cat) && (state.store === 'all' || p.store === state.store));
+  const first = list.slice(0, 6), rest = list.slice(6);
+  $('#grid1').innerHTML = first.map(p => card(p)).join('');
+  $('#grid2').innerHTML = rest.map(p => card(p)).join('');
+  $('#titleMore').hidden = !rest.length;
+  $('#empty').hidden = list.length > 0;
+  $('#titleMain').hidden = !list.length;
+}
+
+function renderFlash() {
+  const flash = data.products.filter(p => p.flash);
+  $('#flashSec').hidden = !flash.length;
+  $('#flashRow').innerHTML = flash.map(p => card(p)).join('');
+}
+
+function renderReels() {
+  const reels = data.products.filter(p => p.reel).slice(0, 8);
+  $('#reelsSec').hidden = !reels.length;
+  $('#reels').innerHTML = reels.map(p => {
+    const d = disc(p), app = safeApp(p.appLink);
+    return `<a class="reel" href="${esc(safeUrl(p.url))}" target="_blank" rel="sponsored noopener"${app ? ` data-app="${esc(app)}"` : ''}>
+      <img src="${esc(p.image)}" alt="" loading="lazy" onerror="this.remove()">
+      ${d >= 5 ? `<span class="off">-${d}%</span>` : ''}
+      <span class="cap">${esc(p.title)}</span></a>`;
+  }).join('');
+}
+
+function renderUpdated() {
+  let txt = '';
+  if (data.updatedAt) {
+    try { txt = 'آخر تحديث: ' + new Date(data.updatedAt).toLocaleString('ar-EG', { dateStyle: 'medium', timeStyle: 'short' }); } catch {}
+  }
+  $('#updated').textContent = txt;
+}
+
+/* ============================================================
+   عداد الصفقات السريعة
+   الأفضل تحديد flashEndsAt في deals.json بوقت انتهاء الصفقات الفعلي.
+   لو مش موجود، بيعد لحد نهاية اليوم.
+   ============================================================ */
+let timerId = null, endMs = 0;
+function endOfToday() { const n = new Date(); n.setHours(23, 59, 59, 999); return n.getTime(); }
+function startTimer() {
+  clearInterval(timerId);
+  endMs = data.flashEndsAt ? Date.parse(data.flashEndsAt) : NaN;
+  if (isNaN(endMs)) endMs = endOfToday();
+  const tick = () => {
+    const ms = endMs - Date.now();
+    if (ms <= 0) {
+      clearInterval(timerId);
+      $('#timer').innerHTML = '<span class="timer-done">الصفقات انتهت، بنجهّز صفقات جديدة...</span>';
+      setTimeout(init, 60000);
+      return;
+    }
+    const s = Math.floor(ms / 1000);
+    $('#tH').textContent = pad(Math.floor(s / 3600));
+    $('#tM').textContent = pad(Math.floor((s % 3600) / 60));
+    $('#tS').textContent = pad(s % 60);
+  };
+  tick(); timerId = setInterval(tick, 1000);
+}
+
+/* ============================================================
+   المشاركة
+   ============================================================ */
+const PLATFORMS = [
+  { n: 'WhatsApp',  u: t => 'https://wa.me/?text=' + t },
+  { n: 'Telegram',  u: (t, l) => 'https://t.me/share/url?url=' + l + '&text=' + t },
+  { n: 'Facebook',  u: (t, l) => 'https://www.facebook.com/sharer/sharer.php?u=' + l },
+  { n: 'X (Twitter)', u: t => 'https://twitter.com/intent/tweet?text=' + t },
+  { n: 'Threads',   u: t => 'https://www.threads.net/intent/post?text=' + t },
+  { n: 'LinkedIn',  u: (t, l) => 'https://www.linkedin.com/sharing/share-offsite/?url=' + l },
+  { n: 'Reddit',    u: (t, l) => 'https://www.reddit.com/submit?url=' + l + '&title=' + t },
+  { n: 'Pinterest', u: (t, l) => 'https://pinterest.com/pin/create/button/?url=' + l + '&description=' + t },
+  { n: 'Instagram', u: () => 'https://www.instagram.com/', copy: true },
+  { n: 'TikTok',    u: () => 'https://www.tiktok.com/upload', copy: true },
+  { n: 'YouTube',   u: () => 'https://studio.youtube.com/', copy: true }
+];
+function buildPost() {
+  const top = [...data.products].sort((a, b) => disc(b) - disc(a)).slice(0, 3);
+  const lines = top.map(p => `• ${p.title} بـ ${money(p.price, p.currency)}${disc(p) >= 5 ? ` (-${disc(p)}%)` : ''}`);
+  return `🔥 أقوى عروض النهاردة على لمحة:\n${lines.join('\n')}\n\nشوفها كلها 👇\n${pageUrl()}`;
+}
+function openShare() {
+  $('#shareText').value = buildPost();
+  $('#nativeShare').hidden = !navigator.share;
+  $('#shareOverlay').classList.add('open');
+}
+function closeShare() { $('#shareOverlay').classList.remove('open'); }
+
+/* ============================================================
+   المساعد
+   ============================================================ */
+const norm = s => String(s).toLowerCase()
+  .replace(/[\u064B-\u065F\u0670]/g, '')
+  .replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
+  .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+const KW = {
+  electronics: ['سماع', 'airpods', 'بلوتوث', 'سبيكر', 'شاحن', 'ساعه ذكيه', 'الكترون', 'كاميرا', 'باور'],
+  phones:      ['موبايل', 'هاتف', 'تليفون', 'جوال', 'سامسونج', 'ايفون', 'iphone', 'samsung'],
+  home:        ['منزل', 'مطبخ', 'غساله', 'ثلاجه', 'قهوه', 'اجهزه', 'ديكور'],
+  fashion:     ['هدوم', 'ملابس', 'لبس', 'جزمه', 'حذاء', 'شنطه', 'كوتشي'],
+  beauty:      ['بشره', 'سيروم', 'جمال', 'عنايه', 'مكياج', 'شعر']
+};
+const has = (q, arr) => arr.some(k => q.includes(norm(k)));
+
+function localAnswer(raw) {
+  const q = norm(raw);
+  if (has(q, ['مرحبا', 'اهلا', 'السلام', 'هاي', 'ازيك'])) return { text: 'أهلاً! قولّي بتدور على إيه وميزانيتك كام، وأنا أرشحلك أنسب العروض.', items: [] };
+  if (has(q, ['عموله', 'افيليت', 'اعلان'])) return { text: 'بعض الروابط في الصفحة روابط أفيليت: بنحصل على عمولة بسيطة لو اشتريت منها، بدون أي تكلفة إضافية عليك.', items: [] };
+  if (has(q, ['شحن', 'توصيل', 'ضمان', 'استرجاع', 'ارجاع'])) return { text: 'الشحن والضمان والاسترجاع بيحددهم كل متجر (Amazon / Temu / AliExpress) وبتشوفهم في صفحة المنتج قبل الدفع.', items: [] };
+
+  let cat = Object.keys(KW).find(k => has(q, KW[k]));
+  let store = /امازون|amazon/.test(q) ? 'amazon' : /تيمو|temu/.test(q) ? 'temu' : /اكسبريس|اليكسبريس|aliexpress|علي/.test(q) ? 'aliexpress' : '';
+  const nums = (q.match(/\d[\d,]*/g) || []).map(n => Number(n.replace(/,/g, ''))).filter(n => n >= 20);
+  const budget = nums.length ? Math.max(...nums) : 0;
+  const cheapest = /ارخص|اقل سعر|رخيص/.test(q);
+
+  let pool = data.products.slice(), note = '';
+  if (cat) pool = pool.filter(p => p.category === cat);
+  const STOP = ['تحت', 'اقل', 'ارخص', 'افضل', 'حاجه', 'عايز', 'عاوز', 'دلوقتي', 'عروض', 'خصم', 'ابغي'];
+  const tokens = q.split(/\s+/).filter(t => t.length >= 3 && !/^\d+$/.test(t) && !STOP.includes(t));
+  const m = pool.filter(p => tokens.some(t => norm(p.title).includes(t)));
+  if (m.length) pool = m;
+  if (store) pool = pool.filter(p => p.store === store);
+  if (!pool.length) return { text: 'ملقتش حاجة مطابقة. جرّب فئة تانية أو متجر تاني.', items: [] };
+  if (budget) {
+    const f = pool.filter(p => p.price <= budget);
+    if (f.length) pool = f; else note = `مفيش حاجة تحت ${budget} ج.م، دي أقرب اختيارات:`;
+  }
+  pool.sort(cheapest ? (a, b) => a.price - b.price : (a, b) => disc(b) - disc(a));
+  return { text: note || (cheapest ? 'دي أرخص الاختيارات المتاحة:' : 'دي أقوى ترشيحاتي ليك:'), items: pool.slice(0, 3) };
+}
+
+async function answer(q) {
+  if (CONFIG.ASSISTANT_ENDPOINT) {
+    try {
+      const r = await fetch(CONFIG.ASSISTANT_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: q, productIds: data.products.map(p => p.id) })
+      });
+      const j = await r.json();
+      if (j && j.reply) return { text: String(j.reply), items: (j.productIds || []).map(id => byId[id]).filter(Boolean).slice(0, 3) };
+    } catch {}
+  }
+  return localAnswer(q);
+}
+
+function addMsg(text, who, items = []) {
+  const d = document.createElement('div'); d.className = 'msg ' + who;
+  const t = document.createElement('div'); t.textContent = text; d.appendChild(t);
+  d.insertAdjacentHTML('beforeend', items.map(p => {
+    const dd = disc(p), app = safeApp(p.appLink);
+    return `<div class="mini"><img src="${esc(p.image)}" alt="" onerror="this.remove()">
+      <div><b>${esc(p.title)}</b><span>${money(p.price, p.currency)}${dd >= 5 ? ` • -${dd}%` : ''} • ${esc(STORES[p.store].name)}</span></div>
+      <a class="buy" href="${esc(safeUrl(p.url))}" target="_blank" rel="sponsored noopener"${app ? ` data-app="${esc(app)}"` : ''}>اشتري</a></div>`;
+  }).join(''));
+  $('#msgs').appendChild(d); $('#msgs').scrollTop = $('#msgs').scrollHeight;
+}
+async function ask(q) {
+  q = q.trim(); if (!q) return;
+  addMsg(q, 'me');
+  const r = await answer(q);
+  addMsg(r.text, 'bot', r.items);
+}
+function toggleChat(force) {
+  const open = force ?? !$('#chat').classList.contains('open');
+  $('#chat').classList.toggle('open', open);
+  $('#fab').setAttribute('aria-expanded', open);
+  if (open && !$('#msgs').children.length) addMsg('أهلاً! أنا مساعد لمحة. قولّي بتدور على إيه وميزانيتك كام وأرشحلك أنسب العروض.', 'bot');
+  if (open) $('#chatInput').focus();
+}
+
+/* ============================================================
+   الأحداث
+   ============================================================ */
+document.addEventListener('click', e => {
+  // Deep link: بيحاول يفتح التطبيق على الموبايل، ولو فشل بيفتح رابط الويب
+  const a = e.target.closest('a[data-app]');
+  if (a && /android|iphone|ipad|ipod/i.test(navigator.userAgent)) {
+    e.preventDefault();
+    const web = a.href; let left = false;
+    document.addEventListener('visibilitychange', () => { if (document.hidden) left = true; }, { once: true });
+    location.href = a.dataset.app;
+    setTimeout(() => { if (!left && !document.hidden) window.open(web, '_blank', 'noopener'); }, 1200);
+  }
+  const c = e.target.closest('[data-cat]'); if (c) { state.cat = c.dataset.cat; renderFilters(); renderCatalog(); }
+  const s = e.target.closest('[data-store]'); if (s) { state.store = s.dataset.store; renderFilters(); renderCatalog(); }
+});
+$('#shareTop').addEventListener('click', openShare);
+$('#shareClose').addEventListener('click', closeShare);
+$('#shareOverlay').addEventListener('click', e => { if (e.target.id === 'shareOverlay') closeShare(); });
+$('#copyPost').addEventListener('click', async () => { toast(await copyText($('#shareText').value) ? 'تم نسخ النص ✅' : 'مقدرتش أنسخ، انسخ النص يدويًا'); });
+$('#nativeShare').addEventListener('click', () => { navigator.share({ text: $('#shareText').value }).catch(() => {}); });
+$('#plats').innerHTML = PLATFORMS.map((p, i) => `<button data-p="${i}">${p.n}</button>`).join('');
+$('#plats').addEventListener('click', async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const p = PLATFORMS[b.dataset.p], text = $('#shareText').value;
+  if (p.copy) { await copyText(text); toast('تم نسخ النص، الصقه في ' + p.n); }
+  window.open(p.u(encodeURIComponent(text), encodeURIComponent(pageUrl())), '_blank', 'noopener');
+});
+$('#fab').addEventListener('click', () => toggleChat());
+$('#chatClose').addEventListener('click', () => toggleChat(false));
+$('#quick').addEventListener('click', e => { const b = e.target.closest('button'); if (b) ask(b.textContent); });
+$('#chatForm').addEventListener('submit', e => { e.preventDefault(); const i = $('#chatInput'); ask(i.value); i.value = ''; });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeShare(); toggleChat(false); } });
+window.addEventListener('resize', setAdHeight);
+
+/* ============================================================
+   تشغيل
+   ============================================================ */
+async function init() {
+  data = clean(await loadDeals());
+  byId = Object.fromEntries(data.products.map(p => [p.id, p]));
+  $('#sampleStrip').hidden = !data.sample;
+  renderAd($('#adTop'), data.ads.top, false);
+  renderAd($('#adBottom'), data.ads.bottom, true);
+  const closeBtn = $('#adClose');
+  if (closeBtn) closeBtn.onclick = () => { document.body.classList.add('no-bottom-ad'); setAdHeight(); };
+  renderFlash(); renderReels(); renderFilters(); renderCatalog(); renderSponsors(); renderUpdated();
+  startTimer(); setAdHeight();
+}
+init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "sample": true,
+  "updatedAt": "2026-09-20T06:00:00+03:00",
+  "flashEndsAt": null,
+  "ads": {
+    "top": null,
+    "bottom": null
+  },
+  "sponsors": [],
+  "products": [
+    {
+      "id": "p1", "store": "amazon", "category": "electronics", "currency": "EGP",
+      "title": "سماعات بلوتوث لاسلكية بخاصية عزل الضوضاء",
+      "image": "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=500&h=500&fit=crop",
+      "price": 1499, "oldPrice": 2499, "flash": true, "reel": true,
+      "url": "https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"
+    },
+    {
+      "id": "p2", "store": "amazon", "category": "electronics", "currency": "EGP",
+      "title": "سبيكر بلوتوث محمول مقاوم للماء",
+      "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=500&fit=crop",
+      "price": 899, "oldPrice": 1349, "flash": true,
+      "url": "https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"
+    },
+    {
+      "id": "p3", "store": "aliexpress", "category": "electronics", "currency": "EGP",
+      "title": "ساعة ذكية بشاشة AMOLED وسوار قابل للتبديل",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop",
+      "price": 690, "oldPrice": 1150, "flash": true,
+      "url": "https://s.click.aliexpress.com/e/REPLACE"
+    },
+    {
+      "id": "p4", "store": "amazon", "category": "phones", "currency": "EGP",
+      "title": "هاتف ذكي بذاكرة 128 جيجا وكاميرا ثلاثية",
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop",
+      "price": 8999, "oldPrice": 10499, "reel": true,
+      "url": "https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"
+    },
+    {
+      "id": "p5", "store": "aliexpress", "category": "phones", "currency": "EGP",
+      "title": "شاحن سريع 65 واط مع كابل مضفر",
+      "image": "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=500&h=500&fit=crop",
+      "price": 180, "oldPrice": 320,
+      "url": "https://s.click.aliexpress.com/e/REPLACE"
+    },
+    {
+      "id": "p6", "store": "temu", "category": "home", "currency": "EGP",
+      "title": "طقم أدوات مطبخ ستانلس ستيل 12 قطعة",
+      "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&h=500&fit=crop",
+      "price": 260, "oldPrice": 520, "flash": true,
+      "url": "https://temu.to/k/REPLACE"
+    },
+    {
+      "id": "p7", "store": "amazon", "category": "home", "currency": "EGP",
+      "title": "ماكينة قهوة بالكبسولات",
+      "image": "https://images.unsplash.com/photo-1572119865084-43c285814d63?w=500&h=500&fit=crop",
+      "price": 3200, "oldPrice": 4900, "flash": true, "reel": true,
+      "url": "https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"
+    },
+    {
+      "id": "p8", "store": "temu", "category": "fashion", "currency": "EGP",
+      "title": "شنطة كتف عصرية بحزام قابل للتعديل",
+      "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&h=500&fit=crop",
+      "price": 240, "oldPrice": 480,
+      "url": "https://temu.to/k/REPLACE"
+    },
+    {
+      "id": "p9", "store": "aliexpress", "category": "fashion", "currency": "EGP",
+      "title": "حذاء رياضي خفيف للجري والمشي",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop",
+      "price": 780, "oldPrice": 1350, "reel": true,
+      "url": "https://s.click.aliexpress.com/e/REPLACE"
+    },
+    {
+      "id": "p10", "store": "amazon", "category": "beauty", "currency": "EGP",
+      "title": "سيروم فيتامين C للوجه",
+      "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&h=500&fit=crop",
+      "price": 420, "oldPrice": 640, "reel": true,
+      "url": "https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"
+    },
+    {
+      "id": "p11", "store": "temu", "category": "beauty", "currency": "EGP",
+      "title": "منظم مكياج شفاف متعدد الأدراج",
+      "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&h=500&fit=crop",
+      "price": 150, "oldPrice": 310,
+      "url": "https://temu.to/k/REPLACE"
+    },
+    {
+      "id": "p12", "store": "amazon", "category": "home", "currency": "EGP",
+      "title": "غسالة أوتوماتيك 8 كجم",
+      "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500&h=500&fit=crop",
+      "price": 14500, "oldPrice": 17900,
+      "url": "https://www.amazon.eg/dp/REPLACE_ASIN?tag=YOUR_TAG"
+    }
+  ]
+}
