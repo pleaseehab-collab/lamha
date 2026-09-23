@@ -90,7 +90,7 @@ if (env.deals.autoUpdate) {
   });
 }
 
-httpServer.listen(env.PORT, () => {
+httpServer.listen(env.PORT, '0.0.0.0', () => {
   logger.info(`لمحة سيرفر شغّال على http://localhost:${env.PORT} (${env.NODE_ENV})`);
   logger.info('Socket.io namespaces: /chat, /games, /auctions');
 });
