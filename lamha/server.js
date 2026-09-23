@@ -90,10 +90,11 @@ if (env.deals.autoUpdate) {
   });
 }
 
-httpServer.listen(env.PORT, () => {
-  logger.info(`لمحة سيرفر شغّال على http://localhost:${env.PORT} (${env.NODE_ENV})`);
+httpServer.listen(env.PORT, '0.0.0.0', () => {
+  logger.info(`لمحة سيرفر شغّال على http://0.0.0.0:${env.PORT} (${env.NODE_ENV})`);
   logger.info('Socket.io namespaces: /chat, /games, /auctions');
 });
 
 process.on('unhandledRejection', err => logger.error('Unhandled Rejection', err));
 process.on('uncaughtException', err => logger.error('Uncaught Exception', err));
+
